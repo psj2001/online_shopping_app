@@ -6,6 +6,8 @@ import 'package:online_shopping_app/utils/widget/Advanced%20Button.dart';
 import 'package:online_shopping_app/view/Screens/authentication%20screens/login%20sreen.dart';
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
@@ -67,7 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       fontSize: 14,
                       letterSpacing: 0.2,
                       fontWeight: FontWeight.bold,
-                      color: Color(
+                      color: const Color(
                         0xFF0d120e,
                       ),
                     ),
@@ -122,7 +124,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         )),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Align(
@@ -170,7 +172,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         )),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Align(
@@ -217,13 +219,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             height: 10,
                           ),
                         ),
-                        suffixIcon: Icon(Icons.visibility)),
+                        suffixIcon: const Icon(Icons.visibility)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   isLoading
-                      ? CircularProgressIndicator()
+                      ? const CircularProgressIndicator()
                       : AdvancedButton(
                           onPress: () async {
                             if (_formkey.currentState!.validate()) {
@@ -236,7 +238,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             }
                           },
                         ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(

@@ -5,6 +5,8 @@ void main() {
 }
 
 class CalculatorApp extends StatelessWidget {
+  const CalculatorApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +17,8 @@ class CalculatorApp extends StatelessWidget {
 }
 
 class CalculatorScreen extends StatefulWidget {
+  const CalculatorScreen({super.key});
+
   @override
   _CalculatorScreenState createState() => _CalculatorScreenState();
 }
@@ -52,7 +56,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Simple Calculator'),
+        title: const Text('Simple Calculator'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -62,40 +66,40 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             TextField(
               controller: _num1Controller,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: 'Enter first number'),
+              decoration: const InputDecoration(labelText: 'Enter first number'),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: _num2Controller,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: 'Enter second number'),
+              decoration: const InputDecoration(labelText: 'Enter second number'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: () => _calculate('+'),
-                  child: Text('+'),
+                  child: const Text('+'),
                 ),
                 ElevatedButton(
                   onPressed: () => _calculate('-'),
-                  child: Text('-'),
+                  child: const Text('-'),
                 ),
                 ElevatedButton(
                   onPressed: () => _calculate('*'),
-                  child: Text('*'),
+                  child: const Text('*'),
                 ),
                 ElevatedButton(
                   onPressed: () => _calculate('/'),
-                  child: Text('/'),
+                  child: const Text('/'),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               _result == null ? 'Result: ' : 'Result: $_result',
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
           ],
         ),

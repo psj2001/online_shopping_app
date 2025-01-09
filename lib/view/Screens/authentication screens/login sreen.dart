@@ -6,6 +6,8 @@ import 'package:online_shopping_app/utils/widget/Advanced%20Button.dart';
 import 'package:online_shopping_app/view/Screens/authentication%20screens/Register%20screen.dart';
 
 class Loginsreen extends StatefulWidget {
+  const Loginsreen({super.key});
+
   @override
   State<Loginsreen> createState() => _LoginsreenState();
 }
@@ -63,7 +65,7 @@ class _LoginsreenState extends State<Loginsreen> {
                       fontSize: 14,
                       letterSpacing: 0.2,
                       fontWeight: FontWeight.bold,
-                      color: Color(
+                      color: const Color(
                         0xFF0d120e,
                       ),
                     ),
@@ -118,7 +120,7 @@ class _LoginsreenState extends State<Loginsreen> {
                           ),
                         )),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Align(
@@ -165,13 +167,13 @@ class _LoginsreenState extends State<Loginsreen> {
                             height: 10,
                           ),
                         ),
-                        suffixIcon: Icon(Icons.visibility)),
+                        suffixIcon: const Icon(Icons.visibility)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   isLoading
-                      ? CircularProgressIndicator(
+                      ? const CircularProgressIndicator(
                           color: Colors.white,
                         )
                       : AdvancedButton(
@@ -185,7 +187,7 @@ class _LoginsreenState extends State<Loginsreen> {
                             }
                           },
                         ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(

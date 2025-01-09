@@ -17,7 +17,7 @@ class AdvancedButton extends StatelessWidget {
         height: 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          gradient: LinearGradient(colors: [
+          gradient: const LinearGradient(colors: [
             Color(0xFF102DE1),
             Color(0xCC0D6EFF),
           ]),
@@ -36,7 +36,7 @@ class AdvancedButton extends StatelessWidget {
                   decoration: BoxDecoration(
                       border: Border.all(
                         width: 13,
-                        color: Color(0xFF103DE5),
+                        color: const Color(0xFF103DE5),
                       ),
                       borderRadius: BorderRadius.circular(30)),
                 ),
