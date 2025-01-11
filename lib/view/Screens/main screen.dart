@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shopping_app/view/Screens/Nav%20screens/Account%20Screen.dart';
 import 'package:online_shopping_app/view/Screens/Nav%20screens/Cart%20Screen.dart';
+import 'package:online_shopping_app/view/Screens/Nav%20screens/Category%20Screen.dart';
 import 'package:online_shopping_app/view/Screens/Nav%20screens/Favourite%20Screen.dart';
 import 'package:online_shopping_app/view/Screens/Nav%20screens/Stores%20Screen.dart';
 import 'package:online_shopping_app/view/Screens/Nav%20screens/home%20screen.dart';
@@ -17,6 +18,7 @@ class _MainscreenState extends State<Mainscreen> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const FavouriteScreen(),
+   const Categoryscreen(),
     const Storesscreen(),
     const CartScreen(),
     const Accountscreen()
@@ -48,6 +50,10 @@ class _MainscreenState extends State<Mainscreen> {
                   width: 25,
                 ),
                 label: 'Favourite',
+              ),
+               BottomNavigationBarItem(
+                icon: Icon(Icons.category),
+                label: 'Categories',
               ),
               BottomNavigationBarItem(
                 icon: Image.asset(
