@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:online_shopping_app/view/Screens/Nav%20screens/widget/banner%20widget.dart';
 import 'package:online_shopping_app/view/Screens/Nav%20screens/widget/header_widget.dart';
 
+import 'widget/CategoryWidget.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -13,6 +15,7 @@ class HomeScreen extends StatelessWidget {
           children: [
           HeaderWidget(),
           BannerWidget(),
+          Categorywidget() 
           ],
         ),
       ),
