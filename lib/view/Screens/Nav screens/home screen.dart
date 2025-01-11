@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_shopping_app/view/Screens/Nav%20screens/widget/header_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -6,8 +7,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text("Home Screen"),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+          HeaderWidget(),
+          ],
+        ),
       ),
     );
   }
