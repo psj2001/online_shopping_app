@@ -45,7 +45,7 @@ class _InnerCategoryScreenState extends State<InnerCategoryScreen> {
   const Categoryscreen(),
   const Storesscreen(),
   const CartScreen(),
-  const Accountscreen()
+   Accountscreen()
   ];
     return Scaffold(
       // appBar: PreferredSize(

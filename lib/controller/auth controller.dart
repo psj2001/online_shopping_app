@@ -13,6 +13,7 @@ import 'package:online_shopping_app/view/Screens/main%20screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final providerContainer = ProviderContainer();
+
 class Authcontroller {
   Future<void> signUpUser({
     required context,
@@ -95,14 +96,14 @@ class Authcontroller {
           await preferences.setString('auth_token', token);
 
           //Encode the user data recived from the backend as json
-        final userJson =  jsonEncode(jsonDecode(response.body)['user']);
+          final userJson = jsonEncode(jsonDecode(response.body)['user']);
 
-        //update the application state with the user data using Riverpod
-         providerContainer.read(userProvider.notifier).setUser(userJson);
+          //update the application state with the user data using Riverpod
+          providerContainer.read(userProvider.notifier).setUser(userJson);
 
-         //store the data in sharedPreference for future user
+          //store the data in sharedPreference for future user
 
-         await preferences.setString('user', userJson);
+          await preferences.setString('user', userJson);
 
           Navigator.pushAndRemoveUntil(
               context,
@@ -114,6 +115,31 @@ class Authcontroller {
     } catch (e) {
       log('Error: $e');
       showSnackbar(context, 'An error occurred. Please try again.');
+    }
+  }
+
+  //signOut
+  Future<void> signOutUser({required context}) async {
+    try {
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+
+      // Clear the token and user from sharedPreference
+      await preferences.remove("auth_token");
+      await preferences.remove("user");
+
+      //clear the state
+
+      providerContainer.read(userProvider.notifier).signOut();
+
+      //navigate the user back to the login screen
+      Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (context) {
+        return Loginsreen();
+      }), (route) => false);
+
+      showSnackbar(context, 'signout successfully');
+    } catch (e) {
+      showSnackbar(context, 'signout successfully');
     }
   }
 }
