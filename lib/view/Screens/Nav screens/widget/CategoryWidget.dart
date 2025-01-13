@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shopping_app/Model/Category%20model.dart';
 import 'package:online_shopping_app/controller/category%20controller.dart';
+import 'package:online_shopping_app/view/Screens/Detail%20screen/innner%20category%20screen.dart';
 import 'package:online_shopping_app/view/Screens/Nav%20screens/widget/reusable_text_widget.dart';
 
 class Categorywidget extends StatefulWidget {
@@ -51,25 +52,30 @@ class _CategorywidgetState extends State<Categorywidget> {
                   ),
                   itemBuilder: (context, index) {
                     final category = categories[index];
-                    return Container(
-                      child: Column(
-                        mainAxisAlignment:
-                            MainAxisAlignment.center, // Center content
-                        children: [
-                          Image.network(
-                            category.image,
-                            height: 47,
-                            width: 47,
-                          ),
-                          Text(
-                            category.name,
-                            style:
-                                GoogleFonts.quicksand(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16
-                                  ),
-                          ),
-                        ],
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return InnerCategoryScreen(category: category,);
+                        }));
+                      },
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment:
+                              MainAxisAlignment.center, // Center content
+                          children: [
+                            Image.network(
+                              category.image,
+                              height: 47,
+                              width: 47,
+                            ),
+                            Text(
+                              category.name,
+                              style: GoogleFonts.quicksand(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
