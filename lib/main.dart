@@ -50,6 +50,7 @@ class MyApp extends ConsumerWidget {
          return user != null? Mainscreen():Loginsreen();
          }
           ),
-    );
+   
+);
   }
 }

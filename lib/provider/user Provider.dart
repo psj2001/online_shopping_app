@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../Model/user.dart';
 
@@ -26,9 +28,11 @@ class Userprovider extends StateNotifier<User?> {
   }
 // Method to cleat user State
 
-void signOut(){
+void signOut() {
   state = null;
+  log('User signed out, state is now: $state');
 }
+
  
 }
  // Make the data accisible within the application
