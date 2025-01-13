@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shopping_app/Model/Category%20model.dart';
+import 'package:online_shopping_app/Model/subcategory%20model.dart';
 import 'package:online_shopping_app/controller/category%20controller.dart';
+import 'package:online_shopping_app/controller/subcategory%20controller.dart';
 import 'package:online_shopping_app/view/Screens/Nav%20screens/widget/header_widget.dart';
 
 class Categoryscreen extends StatefulWidget {
@@ -13,12 +15,24 @@ class Categoryscreen extends StatefulWidget {
 
 class _CategoryscreenState extends State<Categoryscreen> {
   late Future<List<Category>> futureCategories;
+
+  List<SubcategoryModel> _subcategories = [];
   Category? _selectedCategory;
 
+  final SubCategoryController _subCategoryController = SubCategoryController();
   @override
   void initState() {
     super.initState();
     futureCategories = CategoryController().loadCategories();
+  }
+
+  //this will load subcategories base on the categoryName
+  Future<void> _loadSubcategories(String categoryName) async {
+    final subcategories = await _subCategoryController
+        .getSubcategoriesByCategoryName(categoryName);
+    setState(() {
+      _subcategories = subcategories;
+    });
   }
 
   @override
@@ -64,6 +78,7 @@ class _CategoryscreenState extends State<Categoryscreen> {
                               setState(() {
                                 _selectedCategory = Category;
                               });
+                              _loadSubcategories(Category.name);
                             },
                           );
                         });
@@ -83,18 +98,71 @@ class _CategoryscreenState extends State<Categoryscreen> {
                         child: Text(
                           _selectedCategory!.name,
                           style: GoogleFonts.quicksand(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1.7,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1.7,
                           ),
                         ),
                       ),
-                      Container(height: 150,decoration: BoxDecoration(
-                        image: DecorationImage(image: NetworkImage(_selectedCategory!.banner),
-                        fit: BoxFit.cover,
-                        filterQuality: FilterQuality.high,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 150,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(_selectedCategory!.banner),
+                              fit: BoxFit.cover,
+                              filterQuality: FilterQuality.high,
+                            ),
+                          ),
                         ),
-                      ),)
+                      ),
+                      _subcategories.isNotEmpty
+                          ? GridView.builder(
+                              shrinkWrap: true,
+                              itemCount: _subcategories.length,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                mainAxisSpacing: 4,
+                                crossAxisSpacing: 8,
+                              ),
+                              itemBuilder: (context, index) {
+                                final subcategory = _subcategories[index];
+
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 50,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                          color: Colors.grey.shade200),
+                                      child: Center(
+                                        child: Image.network(
+                                          subcategory.image,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        subcategory.subCategoryName,
+                                        style: GoogleFonts.quicksand(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              })
+                          : Center(
+                              child: Text("No subcategories",
+                              style: GoogleFonts.quicksand(fontSize: 12,
+                              fontWeight: FontWeight.bold
+                              ),
+                              ),
+                            )
                     ],
                   )
                 : Container(),
