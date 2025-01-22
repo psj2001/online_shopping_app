@@ -44,7 +44,7 @@ class _InnerCategoryScreenState extends State<InnerCategoryScreen> {
   const FavouriteScreen(),
   const Categoryscreen(),
   const Storesscreen(),
-  const CartScreen(),
+   CartScreen(),
    Accountscreen()
   ];
     return Scaffold(
