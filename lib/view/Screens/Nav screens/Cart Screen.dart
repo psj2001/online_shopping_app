@@ -22,7 +22,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
           width: MediaQuery.of(context).size.width,
           height: 118,
           clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(
                     'assets/cartb.png',
@@ -36,7 +36,8 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                 child: Stack(
                   children: [
                     IconButton(
-                      onPressed: () {print("object==>>$cartData");
+                      onPressed: () {
+                        print("object==>>$cartData");
                       },
                       icon: Badge.count(
                         count: cartData.length,
@@ -62,7 +63,7 @@ class _CartScreenState extends ConsumerState<CartScreen> {
           ),
         ), 
       ),
-      body: Column(
+      body: const Column(
         children: [
           Center(
             child: Text("Cart Screen"),

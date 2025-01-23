@@ -55,7 +55,7 @@ class _CategoryscreenState extends State<Categoryscreen> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(MediaQuery.of(context).size.height),
-        child: HeaderWidget(),
+        child: const HeaderWidget(),
       ),
       body: Row(crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -135,11 +135,11 @@ class _CategoryscreenState extends State<Categoryscreen> {
                         ),
                         _subcategories.isNotEmpty
                             ? GridView.builder(
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: _subcategories.length,
                                 gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 3,
                                   mainAxisSpacing: 4,
                                   crossAxisSpacing: 8,

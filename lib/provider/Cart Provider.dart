@@ -30,9 +30,11 @@ class CartNotifier extends StateNotifier<Map<String, Cart>> {
     required String description,
     required String fullName,
   }) {
+
     // Check if product is already in the cart
     if (state.containsKey(productId)) {
       //if the product is already in the cart , update its quantity and maybe other details
+      
       state = {
         ...state,
         productId: Cart(

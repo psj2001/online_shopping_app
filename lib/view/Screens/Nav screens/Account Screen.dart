@@ -13,7 +13,7 @@ class Accountscreen extends StatelessWidget {
           onPressed: () async {
             await _authcontroller.signOutUser(context: context);
           },
-          child: Text("Sign Out"),
+          child: const Text("Sign Out"),
         ),
       ),
     );
