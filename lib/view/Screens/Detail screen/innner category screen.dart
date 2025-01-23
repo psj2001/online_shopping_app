@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shopping_app/Model/Category%20model.dart';
 import 'package:online_shopping_app/Model/subcategory%20model.dart';
 import 'package:online_shopping_app/controller/subcategory%20controller.dart';
-import 'package:online_shopping_app/view/Screens/Detail%20screen/widget/SubcategoryTitleWidget.dart';
-import 'package:online_shopping_app/view/Screens/Detail%20screen/widget/inner%20Banner%20Widget.dart';
 import 'package:online_shopping_app/view/Screens/Detail%20screen/widget/inner%20category%20content%20widget.dart';
-import 'package:online_shopping_app/view/Screens/Detail%20screen/widget/inner%20header%20widget.dart';
 
 import '../Nav screens/Account Screen.dart';
 import '../Nav screens/Cart Screen.dart';
@@ -23,7 +19,7 @@ class InnerCategoryScreen extends StatefulWidget {
   State<InnerCategoryScreen> createState() => _InnerCategoryScreenState();
 }
 
-class _InnerCategoryScreenState extends State<InnerCategoryScreen> {  
+class _InnerCategoryScreenState extends State<InnerCategoryScreen> {
   int _pageindex = 0;
   late Future<List<SubcategoryModel>> _subcategories;
   final SubCategoryController _subCategoryController = SubCategoryController();
@@ -38,21 +34,22 @@ class _InnerCategoryScreenState extends State<InnerCategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-   
-  final List<Widget> _pages = [
-  Innercategorycontentwidget(category: widget.category,),
-  const FavouriteScreen(),
-  const Categoryscreen(),
-  const Storesscreen(),
-   CartScreen(),
-   Accountscreen()
-  ];
+    final List<Widget> _pages = [
+      Innercategorycontentwidget(
+        category: widget.category,
+      ),
+      const FavouriteScreen(),
+      const Categoryscreen(),
+      const Storesscreen(),
+      CartScreen(),
+      Accountscreen()
+    ];
     return Scaffold(
-      // appBar: PreferredSize(
-      //   preferredSize: Size.fromHeight(MediaQuery.of(context).size.height),
-      //   child: InnerHeaderWidget(),
-      // ),
-      bottomNavigationBar: BottomNavigationBar(
+        // appBar: PreferredSize(
+        //   preferredSize: Size.fromHeight(MediaQuery.of(context).size.height),
+        //   child: InnerHeaderWidget(),
+        // ),
+        bottomNavigationBar: BottomNavigationBar(
             onTap: (value) {
               setState(() {
                 _pageindex = value;
@@ -77,7 +74,7 @@ class _InnerCategoryScreenState extends State<InnerCategoryScreen> {
                 ),
                 label: 'Favourite',
               ),
-               BottomNavigationBarItem(
+              BottomNavigationBarItem(
                 icon: Icon(Icons.category),
                 label: 'Categories',
               ),
@@ -103,6 +100,6 @@ class _InnerCategoryScreenState extends State<InnerCategoryScreen> {
                 label: 'Account',
               ),
             ]),
-        body: _pages[_pageindex] );
+        body: _pages[_pageindex]);
   }
 }
